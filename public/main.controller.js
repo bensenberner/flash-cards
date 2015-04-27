@@ -1,10 +1,18 @@
 app.controller('MainController', function ($scope, FlashCardsFactory) {
-	//$scope.flashCards = whateverName;
   FlashCardsFactory.getFlashCards().then(function(cards) {
-    for (var i = 0; i < cards.length; i++) {
-      console.log(cards[i].question);
-    }
+    console.log(cards);
   });
+
+  $scope.getCategoryCards = function (category) {
+    console.log(category + " is money")
+  }
+
+  $scope.categories = [
+    'MongoDB',
+    'Express',
+    'Angular',
+    'Node'
+  ];
 
 	$scope.answerQuestion = function (answer, flashCard) {
 		if (!flashCard.answered) {
@@ -12,4 +20,5 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
 			flashCard.answeredCorrectly = answer.correct;
 		}
 	}
+
 });

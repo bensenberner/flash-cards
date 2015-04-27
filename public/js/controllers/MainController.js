@@ -10,11 +10,10 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
     ''
   ];
 
-    FlashCardsFactory.getFlashCards().then(function (data) {
-      $scope.loaded = true;
-      $scope.flashCards = data;
-    });
-
+  FlashCardsFactory.getFlashCards().then(function (data) {
+    $scope.loaded = true;
+    $scope.flashCards = data;
+  });
 
   $scope.getCategoryCards = function (category) {
     $scope.currentCategory = category;

@@ -1,6 +1,6 @@
 app.factory('ScoreFactory', function () {
-    return {
-       correct: 0,
-       incorrect: 0
-   };
+  return {
+    correct: 0,
+    incorrect: 0
+  };
 });

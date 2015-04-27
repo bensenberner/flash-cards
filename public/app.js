@@ -33,6 +33,6 @@ app.factory('FlashCardsFactory', function ($http) {
       return $http.get('/cards').then(function (response) {
         return response.data;
       });
-    };
+    }
   };
 });

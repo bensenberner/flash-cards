@@ -12,10 +12,19 @@
 
         <div ng-include="'templates/stats.html'"></div>
 
-        <button border-on-hover ng-repeat="category in categories" class="category-button" ng-click="getCategoryCards(category)" ng-class="{'active' : currentCategory == category}">{{ category == '' ? 'Reset' : category }}</button>
+        <button border-on-hover
+             ng-repeat="category in categories"
+             class="category-button"
+             ng-click="getCategoryCards(category)"
+             ng-class="{'active' : currentCategory == category}">
+          {{ category == '' ? 'Reset' : category }}
+        </button>
         <loader ng-show="!loaded"></loader>
 
-        <flash-card ng-repeat="flashCard in flashCards | orderBy: 'question'" card="flashCard" answer-function="answerQuestion"></flash-card>
+        <flash-card ng-repeat="flashCard in flashCards | orderBy: 'question'"
+                    card="flashCard"
+                    answer-function="answerQuestion">
+        </flash-card>
 
         <script src="lib/angular.js"></script>
         <script src="js/app.js"></script>

@@ -1,11 +1,17 @@
 app.controller('MainController', function ($scope, FlashCardsFactory) {
   FlashCardsFactory.getFlashCards().then(function(cards) {
-    console.log(cards);
+    $scope.flashCards = cards
   });
 
   $scope.getCategoryCards = function (category) {
-    console.log(category + " is money")
-  }
+    FlashCardsFactory.getFlashCards(category).then(function(cards) {
+      $scope.flashCards = cards;
+    });
+  };
+
+  //FlashCardsFactory.getFlashCards($scope.category).then(function(cards) {
+  //return cards;
+  //});
 
   $scope.categories = [
     'MongoDB',
@@ -14,11 +20,11 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
     'Node'
   ];
 
-	$scope.answerQuestion = function (answer, flashCard) {
-		if (!flashCard.answered) {
-			flashCard.answered = true;
-			flashCard.answeredCorrectly = answer.correct;
-		}
-	}
+  $scope.answerQuestion = function (answer, flashCard) {
+    if (!flashCard.answered) {
+      flashCard.answered = true;
+      flashCard.answeredCorrectly = answer.correct;
+    }
+  }
 
 });

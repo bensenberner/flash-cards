@@ -1,7 +1,6 @@
-app.controller('MainController', function ($scope, FlashCardsFactory) {
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
   FlashCardsFactory.getFlashCards().then(function(cards) {
     $scope.flashCards = cards;
-    //console.log(cards[0].category);
   });
 
   $scope.activeCategory = function(category) {
@@ -36,10 +35,17 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
     }
     if (answer.correct) {
       ScoreFactory.correct++;
+      //$scope.scores.correct++;
     }
     else {
       ScoreFactory.incorrect++;
+      //$scope.scores.incorrect++;
     }
+    console.log(ScoreFactory);
   }
 
+});
+
+app.controller('StatsController', function ($scope, ScoreFactory) {
+  $scope.scores = ScoreFactory;
 });
